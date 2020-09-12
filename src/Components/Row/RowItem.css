@@ -1,0 +1,34 @@
+.row__container {
+  background: #fff;
+  overflow-x: scroll;
+}
+
+.row__container::-webkit-scrollbar {
+  color: transparent;
+}
+
+.row__item {
+  height: 420px;
+  background: transparent;
+}
+
+.inner__div__row {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px;
+  height: 300px;
+  background: transparent;
+}
+
+.inner__div__row p {
+  padding: 20px;
+  padding-bottom: 5px;
+}
+
+.inner__div__row .img * {
+  height: 90%;
+  width: 90%;
+  object-fit: contain;
+  margin-left: 10px;
+}

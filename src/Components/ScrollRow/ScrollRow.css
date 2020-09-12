@@ -1,0 +1,29 @@
+.scoll__row__container {
+  background: #fff;
+}
+
+.scroll__row {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.scroll__row img {
+  margin: auto 30px;
+}
+
+.scroll__row__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.scroll__row::-webkit-scrollbar {
+  color: transparent;
+}
+
+@media screen and (max-width: 575.98px) {
+  .scroll__row img {
+    height: 75px;
+    width: 75px;
+  }
+}

@@ -1,0 +1,21 @@
+.back__to__top {
+  background: #37475a;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  height: 50px;
+}
+
+.footer__items {
+  background: #232f3e;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+.footer__item__title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.footer__item {
+  font-size: 12px;
+}
