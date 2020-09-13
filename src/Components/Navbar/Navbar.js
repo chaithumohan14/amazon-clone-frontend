@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
-import "./Navbar.css";
+
+import { actions } from "../../reducer";
+import { Store } from "../../context";
+
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import "./Navbar.css";
 
 export default function Navbar() {
+  const [, dispatch] = Store();
   const history = useHistory();
+  const [search, setSearch] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: actions.SET_SEARCH,
+      searchTerm: search,
+    });
+    history.push("/search");
+  };
   return (
     <React.Fragment>
       <nav
@@ -22,8 +36,18 @@ export default function Navbar() {
             width="200px"
           />
         </Link>
-        <form className="search__bar row d-none d-lg-flex   flex-row align-items-center justify-content-center">
-          <input className="col-11 " type="text" name="search" />
+        <form
+          action="/search"
+          onSubmit={(e) => handleSubmit(e)}
+          className="search__bar row d-none d-lg-flex   flex-row align-items-center justify-content-center"
+        >
+          <input
+            className="col-11 "
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            name="search"
+          />
           <button className="col-1">
             <SearchIcon />
           </button>
@@ -59,7 +83,10 @@ export default function Navbar() {
         </div>
       </nav>
       <section className="sec__search">
-        <form className="search__bar mx-auto row d-lg-none d-flex   flex-row align-items-center justify-content-center">
+        <form
+          action="/search"
+          className="search__bar mx-auto row d-lg-none d-flex   flex-row align-items-center justify-content-center"
+        >
           <input className="col-9 " type="text" name="search" />
           <button className="col-1 text-center">
             <SearchIcon />
