@@ -1,0 +1,60 @@
+input {
+  font-family: "Roboto", sans-serif;
+  height: auto;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 0 rgba(0, 0, 0, 0.07) inset;
+  border-color: #949494;
+  border-radius: 3px;
+  border: 1px solid #a6a6a6;
+  padding: 7px;
+}
+
+.login__button,
+button {
+  background: #f0c14b;
+  color: #111;
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 3px;
+  vertical-align: middle;
+  border-radius: 3px !important;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 16px;
+  line-height: 19px;
+  height: 50px;
+  outline: none;
+  padding: 10px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+.login__button:focus {
+  outline: none;
+}
+
+.new__to__amazon__hr {
+  border: none;
+  border-bottom: 2px solid #e7e7e7;
+}
+
+.new__to__amazon {
+  color: #b3aeae;
+  font-family: "Roboto", sans-serif;
+}
+
+.sign__up__button {
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  background: #e7e9ec;
+  height: auto;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+  width: auto;
+}
+
+.sign__up__button:focus {
+  outline: none;
+}
+
+/* #f1c862 */
+/* 949494  */

@@ -7,7 +7,7 @@ export default function RowItem({ text, img }) {
       <div className="inner__div__row">
         <p>{text}</p>
         <div className="img">
-          <img src={img} alt="" srcset="" />
+          <img src={img} alt="" srcSet="" />
         </div>
       </div>
     </div>

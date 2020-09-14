@@ -5,7 +5,7 @@ import React from "react";
 export default function SmallContainer({ text, toLink, linkText }) {
   return (
     <div className="small__container">
-      <p className="mx-auto my-auto text-center">
+      <p className="mx-5 my-auto text-center">
         {text}
         <span>
           <Link to={toLink}>{linkText}</Link>

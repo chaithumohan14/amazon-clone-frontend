@@ -55,7 +55,7 @@ export default function Footer() {
         <div className="row">
           <FooterItem empty />
           {Object.keys(footer_navs).map((key) => (
-            <FooterItem title={key} items={footer_navs[key]} />
+            <FooterItem title={key} key={key} items={footer_navs[key]} />
           ))}
           <FooterItem empty />
         </div>

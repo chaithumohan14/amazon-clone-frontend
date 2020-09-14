@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 
 import { actions } from "../../reducer";
@@ -9,24 +9,23 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const [, dispatch] = Store();
+  const [store, dispatch] = Store();
   const history = useHistory();
-  const [search, setSearch] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: actions.SET_SEARCH,
-      searchTerm: search,
-    });
-    history.push("/search");
+    if (store.searchTerm !== "") {
+      history.push("/search");
+    } else {
+      history.push("/");
+    }
   };
   return (
     <React.Fragment>
       <nav
         id="navbar"
-        class="container-fluid d-flex flex-row  align-items-lg-center justify-content-between"
+        className="container-fluid d-flex flex-row  align-items-lg-center justify-content-between"
       >
-        <Link path="/">
+        <Link to="/">
           <img
             onClick={(e) => history.push("/")}
             src="http://pngimg.com/uploads/amazon/amazon_PNG25.png"
@@ -37,6 +36,7 @@ export default function Navbar() {
           />
         </Link>
         <form
+          autoComplete="off"
           action="/search"
           onSubmit={(e) => handleSubmit(e)}
           className="search__bar row d-none d-lg-flex   flex-row align-items-center justify-content-center"
@@ -44,8 +44,13 @@ export default function Navbar() {
           <input
             className="col-11 "
             type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={store.searchTerm}
+            onChange={(e) => {
+              dispatch({
+                type: actions.SET_SEARCH,
+                searchTerm: e.target.value,
+              });
+            }}
             name="search"
           />
           <button className="col-1">
@@ -54,21 +59,38 @@ export default function Navbar() {
         </form>
 
         <div className="nav__items d-flex flex-row  align-items-center justify-content-center ">
-          <NavLink
-            activeClassName="nav__item"
-            to="/"
-            className="nav__item text-left "
-          >
-            <p className="upper__nav__item">Hello , Sign in</p>
-            <p className="lower__nav__item">Accounts and Lists</p>
-          </NavLink>
+          {store.user.username ? (
+            <NavLink
+              activeClassName="nav__item"
+              to="/logout"
+              className="nav__item text-left "
+            >
+              <p className="upper__nav__item">Hello ,{store.user.username}</p>
+              <p className="lower__nav__item">Accounts and Lists</p>
+            </NavLink>
+          ) : (
+            <NavLink
+              activeClassName="nav__item"
+              to="/login"
+              className="nav__item text-left "
+            >
+              <p className="upper__nav__item">Hello , Sign in</p>
+              <p className="lower__nav__item">Accounts and Lists</p>
+            </NavLink>
+          )}
           <NavLink
             activeClassName="nav__item"
             to="/"
             className="nav__item text-left d-lg-block d-none "
           >
             <p className="upper__nav__item">Returns</p>
-            <p className="lower__nav__item">& Orders</p>
+            <p className="lower__nav__item">
+              & Orders (
+              {store.user && store.user.orders && store.user.username
+                ? store.user.orders.length
+                : 0}
+              )
+            </p>
           </NavLink>
           <NavLink
             activeClassName="nav__item"
@@ -78,16 +100,35 @@ export default function Navbar() {
             <p className="upper__nav__item">
               <ShoppingCartIcon />
             </p>
-            <p className="lower__nav__item">Cart</p>
+            <p className="lower__nav__item">
+              Cart(
+              {store.user && store.user.cart && store.user.username
+                ? store.user.cart.length
+                : 0}
+              )
+            </p>
           </NavLink>
         </div>
       </nav>
       <section className="sec__search">
         <form
+          autoComplete="off"
           action="/search"
+          onSubmit={(e) => handleSubmit(e)}
           className="search__bar mx-auto row d-lg-none d-flex   flex-row align-items-center justify-content-center"
         >
-          <input className="col-9 " type="text" name="search" />
+          <input
+            className="col-11 "
+            type="text"
+            value={store.searchTerm}
+            onChange={(e) => {
+              dispatch({
+                type: actions.SET_SEARCH,
+                searchTerm: e.target.value,
+              });
+            }}
+            name="search"
+          />
           <button className="col-1 text-center">
             <SearchIcon />
           </button>

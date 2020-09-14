@@ -1,0 +1,10 @@
+.search__component__title,
+.search__component__price,
+.search__component__stock {
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+}
+
+.search__component {
+  border-bottom: 2px solid #ddd;
+}

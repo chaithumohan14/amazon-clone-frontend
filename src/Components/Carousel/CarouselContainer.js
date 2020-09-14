@@ -10,10 +10,10 @@ export default function CarouselContainer() {
   return (
     <div
       id="carouselExampleControls"
-      class="carousel slide"
+      className="carousel slide"
       data-ride="carousel"
     >
-      <div class="carousel-inner">
+      <div className="carousel-inner">
         <CarouselItem img={img1} active />
         <CarouselItem img={img2} />
         <CarouselItem img={img3} />

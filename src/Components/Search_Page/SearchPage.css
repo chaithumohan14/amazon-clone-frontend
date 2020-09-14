@@ -1,0 +1,15 @@
+.results__div,
+.no__results {
+  border-bottom: 2px solid #ddd;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.no__results__div {
+  max-width: 70%;
+}
+
+.no__results {
+  border: none;
+  font-size: 20px;
+}
