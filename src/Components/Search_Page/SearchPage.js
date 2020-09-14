@@ -44,6 +44,7 @@ export default function SearchPage(props) {
           <div className="col-lg-10 col-12">
             {searchData.map((item) => (
               <SearchComponent
+                id={item._id}
                 title={item.name}
                 img={item.imageURLs.split(",")[0]}
                 price={item.amountMax}

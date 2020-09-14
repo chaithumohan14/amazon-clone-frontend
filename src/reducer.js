@@ -3,13 +3,14 @@ export const initialState = {
   user: {},
 };
 
-export const URL = "http://localhost:5000";
-// export const URL = "https://polar-island-66350.herokuapp.com";
+// export const URL = "http://localhost:5000";
+export const URL = "https://polar-island-66350.herokuapp.com";
 
 export const actions = {
   SET_SEARCH: "SET_SEARCH",
   SET_USER: "SET_USER",
   CLEAR_USER: "CLEAR_USER",
+  ADD_CART: "ADD_CART",
 };
 
 export const reducer = (state, action) => {
