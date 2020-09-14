@@ -19,8 +19,6 @@ export default function LoginPage() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Origin": "http://localhost:5000",
-        Origin: "http://localhost:5000",
       },
       credentials: "include",
     })
