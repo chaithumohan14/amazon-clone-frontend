@@ -3,6 +3,7 @@ import { Store } from "../../context";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../LoginPage/LoginPage.css";
+import "./RegisterPage.css";
 
 export default function LoginPage() {
   const history = useHistory();
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [emailid, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState("none");
   const handleRegister = async (e) => {
     e.preventDefault();
     let body = { username: username, password: password, emailid: emailid };
@@ -24,16 +26,22 @@ export default function LoginPage() {
     })
       .then((res) => res.json())
       .then((data) => {
-        let user = data;
-        dispatch({
-          type: actions.SET_USER,
-          user: user,
-        });
-        if (data.username === username) {
-          console.log("Login Is Secure");
-          history.push("/");
+        console.log(data);
+        if (Object.keys(data).includes("err") && data.err !== "") {
+          setAlert("block");
         } else {
-          console.log("Login Is Not Secure");
+          setAlert("none");
+          let user = data;
+          dispatch({
+            type: actions.SET_USER,
+            user: user,
+          });
+          if (data.username === username) {
+            console.log("Login Is Secure");
+            history.push("/");
+          } else {
+            console.log("Login Is Not Secure");
+          }
         }
       })
       .catch((err) => console.log(err.message));
@@ -51,6 +59,17 @@ export default function LoginPage() {
               width="90px"
             />
           </Link>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-9 mx-auto text-center register__alert ">
+          <div
+            className="alert alert-danger"
+            style={{ display: alert }}
+            role="alert"
+          >
+            User Already Exists . Try Logging In .
+          </div>
         </div>
       </div>
       <div className="row">

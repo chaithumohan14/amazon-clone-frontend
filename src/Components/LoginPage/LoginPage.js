@@ -10,9 +10,9 @@ export default function LoginPage() {
   const [, dispatch] = Store();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState("none");
   const handleLogin = async (e) => {
     e.preventDefault();
-    // let body = { username: username, password: password };
     await fetch(`${URL}/login`, {
       method: "post",
       body: JSON.stringify({ username: username, password: password }),
@@ -21,25 +21,29 @@ export default function LoginPage() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       credentials: "include",
-      // mode: "no-cors",
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        let user = data;
-        dispatch({
-          type: actions.SET_USER,
-          user: user,
-        });
-        if (data.username === username) {
-          console.log("Login Is Secure");
-          history.push("/");
+        if (!Object.keys(data).includes("err")) {
+          setAlert("none");
+          let user = data;
+          dispatch({
+            type: actions.SET_USER,
+            user: user,
+          });
+          if (data.username === username) {
+            console.log("Login Is Secure");
+            history.push("/");
+          } else {
+            console.log("Login Is Not Secure");
+          }
         } else {
-          console.log("Login Is Not Secure");
+          setAlert("block");
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err));
   };
   return (
     <div className="container-fluid">
@@ -54,6 +58,15 @@ export default function LoginPage() {
               width="90px"
             />
           </Link>
+        </div>
+      </div>
+      <div className="row">
+        <div
+          className="alert alert-danger col-9 mx-auto password__wrong__alert text-center"
+          role="alert"
+          style={{ display: alert }}
+        >
+          The Credentials You Entered Are Not Valid
         </div>
       </div>
       <div className="row">
