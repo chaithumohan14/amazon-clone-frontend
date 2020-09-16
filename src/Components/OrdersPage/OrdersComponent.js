@@ -44,7 +44,7 @@ export default function CartComponent({ key, id, img, name, stock, price }) {
             onClick={(e) => removeFromOrders(e)}
             className="p-1 px-2 my-3 col-auto add__to__cart "
           >
-            <RemoveShoppingCartIcon className="mx-1" /> Remove From Orders
+            <RemoveShoppingCartIcon className="mx-1" /> Cancel Order
           </button>
         </div>
       </div>
