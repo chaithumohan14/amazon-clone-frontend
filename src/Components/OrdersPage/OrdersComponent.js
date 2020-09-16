@@ -1,7 +1,7 @@
 import React from "react";
 import { Store } from "../../context";
 import { actions, URL } from "../../reducer";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 
 export default function CartComponent({ key, id, img, name, stock, price }) {
   const [store, dispatch] = Store();
@@ -44,7 +44,7 @@ export default function CartComponent({ key, id, img, name, stock, price }) {
             onClick={(e) => removeFromOrders(e)}
             className="p-1 px-2 my-3 col-auto add__to__cart "
           >
-            <FavoriteIcon className="mx-1" /> Remove From Orders
+            <RemoveShoppingCartIcon className="mx-1" /> Remove From Orders
           </button>
         </div>
       </div>
