@@ -39,10 +39,10 @@ export default function Navbar() {
           autoComplete="off"
           action="/search"
           onSubmit={(e) => handleSubmit(e)}
-          className="search__bar row d-none d-lg-flex   flex-row align-items-center justify-content-center"
+          className="search__bar row d-flex  flex-row align-items-lg-center align-items-start justify-content-center"
         >
           <input
-            className="col-11 "
+            className="col-lg-10 col-8 "
             type="text"
             value={store.searchTerm}
             onChange={(e) => {
@@ -53,7 +53,7 @@ export default function Navbar() {
             }}
             name="search"
           />
-          <button className="col-1">
+          <button className="col-1" style={{ maxWidth: "50px" }}>
             <SearchIcon />
           </button>
         </form>
@@ -63,7 +63,7 @@ export default function Navbar() {
             <NavLink
               activeClassName="nav__item"
               to="/logout"
-              className="nav__item text-left "
+              className="nav__item text-left d-lg-block d-none"
             >
               <p className="upper__nav__item">Hello ,{store.user.username}</p>
               <p className="lower__nav__item">Accounts and Lists</p>
@@ -72,7 +72,7 @@ export default function Navbar() {
             <NavLink
               activeClassName="nav__item"
               to="/login"
-              className="nav__item text-left "
+              className="nav__item text-left d-lg-block d-none"
             >
               <p className="upper__nav__item">Hello , Sign in</p>
               <p className="lower__nav__item">Accounts and Lists</p>
@@ -81,7 +81,7 @@ export default function Navbar() {
           <NavLink
             activeClassName="nav__item"
             to="/orders"
-            className="nav__item text-left  "
+            className="nav__item text-left d-lg-block d-none "
           >
             <p className="upper__nav__item">Returns</p>
             <p className="lower__nav__item">
@@ -95,7 +95,7 @@ export default function Navbar() {
           <NavLink
             activeClassName="nav__item"
             to="/cart"
-            className="nav__item  text-left  "
+            className="nav__item d-lg-block text-left d-none "
           >
             <p className="upper__nav__item">
               <ShoppingCartIcon />
@@ -111,28 +111,59 @@ export default function Navbar() {
         </div>
       </nav>
       <section className="sec__search">
-        <form
-          autoComplete="off"
-          action="/search"
-          onSubmit={(e) => handleSubmit(e)}
-          className="search__bar mx-auto row d-lg-none d-flex   flex-row align-items-center justify-content-center"
-        >
-          <input
-            className="col-11 "
-            type="text"
-            value={store.searchTerm}
-            onChange={(e) => {
-              dispatch({
-                type: actions.SET_SEARCH,
-                searchTerm: e.target.value,
-              });
-            }}
-            name="search"
-          />
-          <button className="col-1 text-center">
-            <SearchIcon />
-          </button>
-        </form>
+        <div className="row  d-lg-none text-center d-flex flex-row align-items-center justify-content-center  ">
+          <div className="nav__items d-flex flex-row align-items-center justify-content-center ">
+            {store.user.username ? (
+              <NavLink
+                activeClassName="nav__item"
+                to="/logout"
+                className="nav__item text-left w-auto"
+              >
+                <p className="upper__nav__item">Hello ,{store.user.username}</p>
+                <p className="lower__nav__item">Accounts and Lists</p>
+              </NavLink>
+            ) : (
+              <NavLink
+                activeClassName="nav__item"
+                to="/login"
+                className="nav__item text-left "
+              >
+                <p className="upper__nav__item">Hello , Sign in</p>
+                <p className="lower__nav__item">Accounts and Lists</p>
+              </NavLink>
+            )}
+            <NavLink
+              activeClassName="nav__item"
+              to="/orders"
+              className="nav__item text-left "
+            >
+              <p className="upper__nav__item">Returns</p>
+              <p className="lower__nav__item">
+                & Orders (
+                {store.user && store.user.orders && store.user.username
+                  ? store.user.orders.length
+                  : 0}
+                )
+              </p>
+            </NavLink>
+            <NavLink
+              activeClassName="nav__item"
+              to="/cart"
+              className="nav__item  text-left  "
+            >
+              <p className="upper__nav__item">
+                <ShoppingCartIcon />
+              </p>
+              <p className="lower__nav__item">
+                Cart(
+                {store.user && store.user.cart && store.user.username
+                  ? store.user.cart.length
+                  : 0}
+                )
+              </p>
+            </NavLink>
+          </div>
+        </div>
       </section>
     </React.Fragment>
   );

@@ -92,7 +92,7 @@ export default function CartComponent({ key, id, img, name, stock, price }) {
           <p className="search__component__price">${price}</p>
           <p className="search__component__stock">{stock}</p>
           <div className="row">
-            <div className="col-4 mx-auto p-2 ">
+            <div className=" col-5 mx-auto p-2 ">
               <button
                 onClick={(e) => removeFromCart(e)}
                 className="p-1 px-2 my-3 col-auto add__to__cart "
@@ -100,7 +100,7 @@ export default function CartComponent({ key, id, img, name, stock, price }) {
                 <FavoriteIcon className="mx-1" /> Remove From Cart
               </button>
             </div>
-            <div className="col-4 mx-auto p-2 ">
+            <div className="col-5  mx-auto p-2 ">
               {!store.user.orders.includes(id) ? (
                 <button
                   onClick={(e) => addToOrders(e)}
