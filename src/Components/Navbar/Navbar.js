@@ -81,7 +81,7 @@ export default function Navbar() {
           <NavLink
             activeClassName="nav__item"
             to="/orders"
-            className="nav__item text-left d-lg-block d-none "
+            className="nav__item text-left  "
           >
             <p className="upper__nav__item">Returns</p>
             <p className="lower__nav__item">
@@ -95,7 +95,7 @@ export default function Navbar() {
           <NavLink
             activeClassName="nav__item"
             to="/cart"
-            className="nav__item d-lg-block text-left d-none "
+            className="nav__item  text-left  "
           >
             <p className="upper__nav__item">
               <ShoppingCartIcon />
