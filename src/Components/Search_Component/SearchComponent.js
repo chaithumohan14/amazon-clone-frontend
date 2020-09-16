@@ -4,7 +4,14 @@ import { URL, actions } from "../../reducer";
 import { Store } from "../../context";
 import "./SearchComponent.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-export default function SearchComponent({ id, img, title, price, stock }) {
+export default function SearchComponent({
+  id,
+  img,
+  title,
+  price,
+  stock,
+  cart = false,
+}) {
   const history = useHistory();
   const [store, dispatch] = Store();
   const addToCart = async (e) => {

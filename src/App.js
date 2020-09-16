@@ -7,6 +7,9 @@ import HomePage from "./Components/HomePage/HomePage";
 import SearchPage from "./Components/Search_Page/SearchPage";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import RegisterPage from "./Components/RegisterPage/RegisterPage";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import CartPage from "./Components/CartPage/CartPage";
+import OrdersPage from "./Components/OrdersPage/OrdersPage";
 import Logout from "./Components/Logout/Logout";
 import Footer from "./Components/Footer/Footer";
 import { actions, URL } from "./reducer";
@@ -63,6 +66,14 @@ function App() {
         </Route>
         <Route path="/register">
           <RegisterPage />
+        </Route>
+        <Route path="/cart">
+          <Navbar />
+          <ProtectedRoute Component={CartPage} />
+        </Route>
+        <Route path="/orders">
+          <Navbar />
+          <ProtectedRoute Component={OrdersPage} />
         </Route>
       </Router>
     </div>

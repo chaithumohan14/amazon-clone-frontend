@@ -1,0 +1,9 @@
+.cart__component {
+  border-bottom: 2px solid #ddd;
+}
+
+.checkout__div {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  border-bottom: 2px solid #ddd;
+}

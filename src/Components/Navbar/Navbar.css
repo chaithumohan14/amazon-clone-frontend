@@ -4,6 +4,8 @@ nav {
   height: 70px;
   font-family: "Poppins", sans-serif;
   padding-top: 5px;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .logo {
